@@ -25,7 +25,7 @@ public class WebSecurityConfig {
                 .password(passwordEncoder().encode("password"))
                 .roles("ADMIN")
                 .build();
-        return new VulnerableUserDetailsManager(user, admin);
+        return new VulnerableUserDetailsManager(user, admin); // Change this to InMemoryUserDetailsManager
     }
 
     //https://reflectoring.io/spring-security/
@@ -46,6 +46,6 @@ public class WebSecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new VulnerablePasswordEncoder();
+        return new VulnerablePasswordEncoder(); // Change this to BCryptPasswordEncoder
     }
 }
