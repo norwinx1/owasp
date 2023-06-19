@@ -1,4 +1,4 @@
-package ch.bbw.owasp;
+package ch.bbw.owasp.vulnerable;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 

@@ -1,5 +1,7 @@
 package ch.bbw.owasp;
 
+import ch.bbw.owasp.vulnerable.VulnerablePasswordEncoder;
+import ch.bbw.owasp.vulnerable.VulnerableUserDetailsManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
