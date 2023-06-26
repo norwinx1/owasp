@@ -1,5 +1,6 @@
 package ch.bbw.owasp.vulnerable;
 
+import ch.bbw.owasp.ImmutableUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsPasswordService;
@@ -12,7 +13,7 @@ import java.util.Set;
 @Slf4j
 public class VulnerableUserDetailsManager implements UserDetailsManager, UserDetailsPasswordService {
 
-    private final Set<UserDetails> users = new HashSet<>();
+    private final Set<ImmutableUser> users = new HashSet<>();
 
     public VulnerableUserDetailsManager(UserDetails... users) {
         for (UserDetails user : users) {
@@ -22,12 +23,12 @@ public class VulnerableUserDetailsManager implements UserDetailsManager, UserDet
 
     @Override
     public UserDetails updatePassword(UserDetails user, String newPassword) {
-        return null;
+        return user;
     }
 
     @Override
     public void createUser(UserDetails user) {
-        users.add(user);
+        users.add(new ImmutableUser(user.getUsername(), user.getPassword(), user.getAuthorities()));
     }
 
     @Override
